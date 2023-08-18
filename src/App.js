@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react'
+import Task from './Task';
 
 function App() {
   const [task, setTask] = useState ([
@@ -56,11 +57,13 @@ function App() {
         {
           task.map((todoItem, index) => {
             return (
-              <div key={index}>
-                <span>{todoItem.text}</span>
-                <input onChange={(event) => handleUpdate(index, event.target.checked)} type='checkbox' checked={todoItem.checked} />
-                <small onClick={() => handleDelete(index)}>Delete</small>
-              </div>
+              <Task 
+                key={index} 
+                task={todoItem} 
+                index={index} 
+                handleDelete={handleDelete} 
+                handleUpdate={handleUpdate}
+              />
             )
           })
         }
